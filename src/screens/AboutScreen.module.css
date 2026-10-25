@@ -1,0 +1,46 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+}
+
+.title {
+  align-self: center;
+  padding: 0 12px;
+  background: linear-gradient(transparent 55%, var(--color-highlight) 55%, var(--color-highlight) 90%, transparent 90%);
+}
+
+.stats {
+  padding: var(--space);
+  text-align: center;
+}
+
+.stat {
+  padding: 8px 0;
+}
+
+.statLabel {
+  font-size: var(--font-h3);
+}
+
+.statValue {
+  font-size: var(--font-h1);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.divider {
+  height: 1px;
+  margin: 4px var(--space);
+  background: var(--color-border);
+}
+
+.text {
+  text-align: center;
+}
+
+.pending {
+  color: var(--color-text-secondary);
+  font-size: var(--font-caption);
+  text-align: center;
+}
