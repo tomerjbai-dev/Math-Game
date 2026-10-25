@@ -7,6 +7,6 @@
 
 /* Leave room at the bottom so the fixed nav never covers content */
 .content {
-  padding: calc(var(--space) * 1.5) var(--space)
+  padding: calc(var(--space) * 1.5 + env(safe-area-inset-top)) var(--space)
     calc(var(--nav-height) + env(safe-area-inset-bottom) + var(--space) * 1.5);
 }

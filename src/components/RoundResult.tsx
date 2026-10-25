@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { TOTAL_EXERCISES } from '../game/exercises.ts'
-import { LostIcon, TrophyIcon } from './icons.tsx'
+import { HomeIcon, LostIcon, StarIcon, TrophyCelebration } from './icons.tsx'
 import styles from './RoundResult.module.css'
 
 type Props = {
@@ -35,15 +35,23 @@ export default function RoundResult({ status, score, onNewRound, onHome }: Props
 
   return (
     <section className={styles.result}>
-      {status === 'won' ? <TrophyIcon /> : <LostIcon />}
-      <h1 ref={titleRef} className={styles.title} tabIndex={-1}>
+      {status === 'won' ? <TrophyCelebration /> : <LostIcon size={112} />}
+      <h1
+        ref={titleRef}
+        className={`highlight ${status === 'lost' ? 'highlight-pink' : ''} ${styles.title}`}
+        tabIndex={-1}
+      >
         {texts.title}
       </h1>
       <p className={styles.line}>{texts.line}</p>
 
-      <div className={`card ${styles.scoreCard}`}>
+      <div className={`card card-paper ${styles.scoreCard}`}>
         <p>הניקוד שלך</p>
-        <p className={`${styles.scoreValue} ${styles[status]}`}>{score}</p>
+        <div className={styles.scoreRow}>
+          {status === 'won' && <StarIcon size={32} />}
+          <p className={`${styles.scoreValue} ${styles[status]}`}>{score}</p>
+          {status === 'won' && <StarIcon size={32} />}
+        </div>
         <p>מתוך {TOTAL_EXERCISES}</p>
       </div>
 
@@ -52,6 +60,9 @@ export default function RoundResult({ status, score, onNewRound, onHome }: Props
           {texts.action}
         </button>
         <button type="button" className="btn btn-secondary" onClick={onHome}>
+          <span className={styles.homeIcon}>
+            <HomeIcon size={24} filled />
+          </span>
           חזרה לבית
         </button>
       </div>

@@ -1,0 +1,17 @@
+{
+  "name": "אלופי הכפל",
+  "short_name": "אלופי הכפל",
+  "description": "מתרגלים ומשתפרים בלוח הכפל 1–10",
+  "lang": "he",
+  "dir": "rtl",
+  "display": "standalone",
+  "start_url": "./",
+  "scope": "./",
+  "theme_color": "#6C63FF",
+  "background_color": "#FFFBF5",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

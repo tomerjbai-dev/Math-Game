@@ -5,6 +5,7 @@ import { TOTAL_EXERCISES, parsePair, product, type DisplayPair } from '../game/e
 import { parseAnswer } from '../game/answer.ts'
 import RoundResult from '../components/RoundResult.tsx'
 import ConfirmDialog from '../components/ConfirmDialog.tsx'
+import { RestartIcon, StarIcon } from '../components/icons.tsx'
 import type { Screen } from '../types.ts'
 import styles from './PracticeScreen.module.css'
 
@@ -108,10 +109,13 @@ export default function PracticeScreen({ onNavigate }: Props) {
     <section className={styles.practice}>
       <h1 className={styles.srOnly}>תרגול</h1>
       <div className={`card ${styles.score}`}>
-        <span>{score}</span> מתוך {TOTAL_EXERCISES}
+        <span>
+          <span className={styles.scoreNumber}>{score}</span> מתוך {TOTAL_EXERCISES}
+        </span>
+        <StarIcon />
       </div>
 
-      <div className={`card ${styles.exercise}`} dir="ltr" aria-label={`כמה זה ${a} כפול ${b}?`}>
+      <div className={`card card-paper ${styles.exercise}`} dir="ltr" aria-label={`כמה זה ${a} כפול ${b}?`}>
         {a} × {b} = ?
       </div>
 
@@ -155,6 +159,7 @@ export default function PracticeScreen({ onNavigate }: Props) {
         onClick={() => setConfirmOpen(true)}
         disabled={advancing}
       >
+        <RestartIcon />
         התחל מחדש
       </button>
 

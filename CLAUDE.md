@@ -59,3 +59,5 @@
 > Claude ממלא זאת ברגע שהאפליקציה יכולה לרוץ (בדרך כלל בסיום Milestone 1), ומעדכן אם משהו משתנה.
 - **הרצה (dev):** `npm run dev` (כתובת: http://localhost:5173/Math-Game/)
 - **בדיקות (test):** `npm test -- --run` (או `npm test` במצב צפייה); בדיקת טיפוסים ו-Build: `npm run build`
+- **בדיקת ה-Build מקומית (preview):** `npm run build` ואז `npm run preview` (כתובת: http://localhost:4173/Math-Game/)
+- **אתר חי (Production):** https://tomerjbai-dev.github.io/Math-Game/ — מתעדכן אוטומטית אחרי כל push ל-`main` (GitHub Actions)

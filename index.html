@@ -2,8 +2,19 @@
 <html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- interactive-widget: on Android Chrome the keyboard shrinks the layout instead of covering it -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
     <meta name="theme-color" content="#6C63FF" />
+    <meta name="description" content="מתרגלים ומשתפרים בלוח הכפל 1–10" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="אלופי הכפל" />
+    <!-- Root-relative paths are rewritten to the Vite base (/Math-Game/) at build time -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>אלופי הכפל</title>
   </head>
   <body>

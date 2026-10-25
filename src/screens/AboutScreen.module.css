@@ -6,17 +6,20 @@
 
 .title {
   align-self: center;
-  padding: 0 12px;
-  background: linear-gradient(transparent 55%, var(--color-highlight) 55%, var(--color-highlight) 90%, transparent 90%);
+  font-size: 36px;
 }
 
 .stats {
-  padding: var(--space);
-  text-align: center;
+  padding: 8px var(--space);
 }
 
 .stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space);
   padding: 8px 0;
+  text-align: center;
 }
 
 .statLabel {
@@ -34,9 +37,10 @@
 }
 
 .divider {
-  height: 1px;
+  height: 2px;
   margin: 4px var(--space);
-  background: var(--color-border);
+  border-radius: 1px;
+  background: var(--color-surface-border);
 }
 
 .text {
@@ -45,4 +49,8 @@
 
 .range {
   white-space: nowrap;
+}
+
+.sectionTitle {
+  text-align: center;
 }

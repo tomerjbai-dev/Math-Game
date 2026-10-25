@@ -13,21 +13,29 @@
 }
 
 .score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   width: 100%;
-  padding: 12px var(--space);
-  text-align: center;
-  font-size: var(--font-h2);
+  padding: 10px var(--space);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-h3);
   font-weight: 700;
+}
+
+.scoreNumber {
+  font-size: var(--font-h2);
 }
 
 .exercise {
   width: 100%;
   padding: calc(var(--space) * 2) var(--space);
-  background: #fff;
   text-align: center;
-  font-size: 56px;
+  font-size: 60px;
   font-weight: 700;
   line-height: 1.1;
+  letter-spacing: 1px;
 }
 
 .answer {
@@ -40,6 +48,8 @@
   font-size: 32px;
   font-weight: 700;
   text-align: center;
+  /* When the keyboard opens, scroll far enough to keep the check button visible too */
+  scroll-margin-bottom: 140px;
 }
 
 .answer:focus {
@@ -65,6 +75,14 @@
   border-radius: var(--radius-md);
   border: 2px solid;
   font-weight: 700;
+  animation: pop-in 0.15s ease-out;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
 }
 
 .feedbackIcon {

@@ -6,20 +6,19 @@
   gap: calc(var(--space) * 0.75);
 }
 
-/* Highlighter stroke behind the title (DESIGN 2.1 Highlight) */
 .title {
-  padding: 0 12px;
-  background: linear-gradient(transparent 55%, var(--color-highlight) 55%, var(--color-highlight) 90%, transparent 90%);
+  font-size: 40px;
 }
 
 .subtitle {
-  color: var(--color-text-secondary);
+  color: var(--color-text);
+  font-size: var(--font-h3);
 }
 
 .illustration {
   width: 100%;
-  max-width: 260px;
-  max-height: 34vh;
+  max-width: 280px;
+  max-height: 36vh;
   object-fit: contain;
 }
 
@@ -29,4 +28,9 @@
   gap: var(--space);
   width: 100%;
   margin-top: calc(var(--space) * 0.5);
+}
+
+.infoIcon {
+  display: inline-flex;
+  color: var(--color-secondary);
 }
