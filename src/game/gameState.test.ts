@@ -12,9 +12,9 @@ function answerWrongly(state: GameState): GameState {
 }
 
 describe('createRound', () => {
-  it('orders all 55 canonical exercises exactly once', () => {
+  it('orders all 45 canonical exercises exactly once', () => {
     const round = createRound()
-    expect(round.order).toHaveLength(55)
+    expect(round.order).toHaveLength(45)
     expect(new Set(round.order.map(canonicalId))).toEqual(new Set(ALL_EXERCISE_IDS))
     expect(round).toMatchObject({ status: 'playing', index: 0, mistakesOnCurrent: 0, score: 0 })
   })
@@ -40,18 +40,18 @@ describe('gameReducer', () => {
     expect(canonicalId(currentPair(next)!)).not.toBe(canonicalId(currentPair(start)!))
   })
 
-  it('never repeats a solved exercise and ends in a win after 55', () => {
+  it('never repeats a solved exercise and ends in a win after 45', () => {
     let state = createInitialState()
     const seen = new Set<string>()
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 45; i++) {
       const id = canonicalId(currentPair(state)!)
       expect(seen.has(id)).toBe(false)
       seen.add(id)
       state = answerCorrectly(state)
     }
-    expect(seen.size).toBe(55)
+    expect(seen.size).toBe(45)
     expect(state.round.status).toBe('won')
-    expect(state.round.score).toBe(55)
+    expect(state.round.score).toBe(45)
     expect(currentPair(state)).toBeNull()
   })
 
@@ -80,5 +80,41 @@ describe('gameReducer', () => {
   it('ignores answers once the round has ended', () => {
     const lost = answerWrongly(answerWrongly(createInitialState()))
     expect(gameReducer(lost, { type: 'answer', value: 1 })).toBe(lost)
+  })
+})
+
+describe('scoring and new rounds', () => {
+  it('a first mistake neither adds nor removes points', () => {
+    const state = answerWrongly(answerCorrectly(answerCorrectly(createInitialState())))
+    expect(state.round.score).toBe(2)
+    expect(state.round.index).toBe(2)
+  })
+
+  it('the personal best rises with the score and never drops', () => {
+    let state = answerCorrectly(answerCorrectly(answerCorrectly(createInitialState())))
+    expect(state.bestScore).toBe(3)
+    state = gameReducer(state, { type: 'newRound', round: createRound() })
+    state = answerCorrectly(state)
+    expect(state.round.score).toBe(1)
+    expect(state.bestScore).toBe(3)
+  })
+
+  it('newRound resets score, attempts and solved list but keeps the best', () => {
+    const lost = answerWrongly(answerWrongly(answerCorrectly(answerCorrectly(createInitialState()))))
+    const round = createRound(sequenceRandom())
+    const next = gameReducer(lost, { type: 'newRound', round })
+    expect(next.round).toEqual({ status: 'playing', order: round.order, index: 0, mistakesOnCurrent: 0, score: 0 })
+    expect(next.bestScore).toBe(2)
+  })
+
+  it('newRound also works after a win, and answers after a win change nothing', () => {
+    let state = createInitialState()
+    for (let i = 0; i < 45; i++) state = answerCorrectly(state)
+    expect(state.bestScore).toBe(45)
+    expect(gameReducer(state, { type: 'answer', value: 1 })).toBe(state)
+    const next = gameReducer(state, { type: 'newRound', round: createRound() })
+    expect(next.round.status).toBe('playing')
+    expect(next.round.score).toBe(0)
+    expect(next.bestScore).toBe(45)
   })
 })

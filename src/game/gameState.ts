@@ -17,7 +17,8 @@ export interface GameState {
   round: Round
 }
 
-export type GameAction = { type: 'answer'; value: number }
+// newRound carries a pre-shuffled round so the reducer stays free of randomness
+export type GameAction = { type: 'answer'; value: number } | { type: 'newRound'; round: Round }
 
 export function createRound(randomInt: RandomInt = cryptoRandomInt): Round {
   const order = shuffle(ALL_EXERCISE_IDS, randomInt).map((id) => {
@@ -62,5 +63,9 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       }
       return { ...state, round: { ...round, status: 'lost' } }
     }
+
+    // Resets the round only; the personal best is kept (PRD FR-04)
+    case 'newRound':
+      return { ...state, round: action.round }
   }
 }

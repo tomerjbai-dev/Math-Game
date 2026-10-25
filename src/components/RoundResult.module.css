@@ -1,0 +1,46 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space);
+  text-align: center;
+}
+
+.title {
+  padding: 0 12px;
+  background: linear-gradient(transparent 55%, var(--color-highlight) 55%);
+}
+
+.title:focus {
+  outline: none;
+}
+
+.line {
+  color: var(--color-text-secondary);
+}
+
+.scoreCard {
+  width: 100%;
+  padding: var(--space);
+  font-weight: 700;
+}
+
+.scoreValue {
+  font-size: 56px;
+  line-height: 1.1;
+}
+
+.won {
+  color: var(--color-primary);
+}
+
+.lost {
+  color: var(--color-error-text);
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

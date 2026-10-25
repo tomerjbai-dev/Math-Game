@@ -3,11 +3,13 @@ export type ExerciseId = string
 // Display order as shown to the child, e.g. "7-3"; canonical id = sorted pair (ADR-1)
 export type DisplayPair = string
 
-export const TOTAL_EXERCISES = 55
+// Factors run 2..10: exercises with a factor of 1 are left out by user request
+export const MIN_FACTOR = 2
+export const TOTAL_EXERCISES = 45
 
 function buildCatalog(): ExerciseId[] {
   const ids: ExerciseId[] = []
-  for (let a = 1; a <= 10; a++) {
+  for (let a = MIN_FACTOR; a <= 10; a++) {
     for (let b = a; b <= 10; b++) {
       ids.push(`${a}-${b}`)
     }

@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest'
 import { ALL_EXERCISE_IDS, TOTAL_EXERCISES, canonicalId, parsePair, product } from './exercises.ts'
 
 describe('exercise catalog', () => {
-  it('contains exactly 55 unique canonical pairs within 1..10', () => {
+  it('contains exactly 45 unique canonical pairs within 2..10', () => {
     expect(ALL_EXERCISE_IDS).toHaveLength(TOTAL_EXERCISES)
-    expect(new Set(ALL_EXERCISE_IDS).size).toBe(55)
+    expect(new Set(ALL_EXERCISE_IDS).size).toBe(45)
     for (const id of ALL_EXERCISE_IDS) {
       const [a, b] = parsePair(id)
-      expect(a).toBeGreaterThanOrEqual(1)
+      expect(a).toBeGreaterThanOrEqual(2)
       expect(b).toBeLessThanOrEqual(10)
       expect(a).toBeLessThanOrEqual(b)
     }

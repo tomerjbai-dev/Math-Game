@@ -15,7 +15,7 @@ export default function App() {
       <div className={styles.shell}>
         <main className={styles.content}>
           {activeScreen === 'home' && <HomeScreen onNavigate={setActiveScreen} />}
-          {activeScreen === 'practice' && <PracticeScreen />}
+          {activeScreen === 'practice' && <PracticeScreen onNavigate={setActiveScreen} />}
           {activeScreen === 'about' && <AboutScreen />}
         </main>
         <BottomNav active={activeScreen} onNavigate={setActiveScreen} />

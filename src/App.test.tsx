@@ -29,4 +29,25 @@ describe('App navigation', () => {
     await user.type(screen.getByLabelText('התשובה שלך'), `${exercise.answer + 1}{Enter}`)
     expect(screen.getByRole('heading', { name: 'הסבב הסתיים' })).toBeInTheDocument()
   })
+
+  it('keeps the end state inside practice when going home and back', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+    const nav = within(screen.getByRole('navigation'))
+
+    await user.click(nav.getByRole('button', { name: 'תרגול' }))
+    const wrong = readExercise().answer + 1
+    await user.type(screen.getByLabelText('התשובה שלך'), `${wrong}{Enter}`)
+    await user.type(screen.getByLabelText('התשובה שלך'), `${wrong}{Enter}`)
+    expect(screen.getByRole('heading', { name: 'הסבב הסתיים' })).toBeInTheDocument()
+    expect(nav.getAllByRole('button')).toHaveLength(3)
+    expect(nav.getByRole('button', { name: 'תרגול' })).toHaveAttribute('aria-current', 'page')
+
+    await user.click(screen.getByRole('button', { name: 'חזרה לבית' }))
+    expect(screen.getByRole('heading', { name: 'אלופי הכפל' })).toBeInTheDocument()
+    expect(nav.getByRole('button', { name: 'בית' })).toHaveAttribute('aria-current', 'page')
+
+    await user.click(nav.getByRole('button', { name: 'תרגול' }))
+    expect(screen.getByRole('heading', { name: 'הסבב הסתיים' })).toBeInTheDocument()
+  })
 })
