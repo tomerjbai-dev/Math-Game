@@ -5,14 +5,11 @@
   gap: var(--space);
 }
 
-.notice {
+.form {
   width: 100%;
-  padding: 12px var(--space);
-  border-radius: var(--radius-md);
-  background: #fff7e0;
-  border: 2px dashed var(--color-accent);
-  text-align: center;
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
 }
 
 .score {
@@ -31,7 +28,6 @@
   font-size: 56px;
   font-weight: 700;
   line-height: 1.1;
-  color: var(--color-text-secondary);
 }
 
 .answer {
@@ -40,9 +36,83 @@
   padding: 8px var(--space);
   border: 2px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-disabled);
+  background: #fff;
   font-size: 32px;
   font-weight: 700;
+  text-align: center;
+}
+
+.answer:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+.answer:disabled {
+  background: var(--color-disabled);
+}
+
+/* Reserved height keeps the button from jumping when a message appears */
+.feedbackArea {
+  min-height: 52px;
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px var(--space);
+  border-radius: var(--radius-md);
+  border: 2px solid;
+  font-weight: 700;
+}
+
+.feedbackIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.success {
+  background: #dcfce7;
+  border-color: var(--color-success);
+  color: var(--color-success-text);
+}
+
+.success .feedbackIcon {
+  background: var(--color-success);
+}
+
+.error {
+  background: #fee2e2;
+  border-color: var(--color-error);
+  color: var(--color-error-text);
+}
+
+.error .feedbackIcon {
+  background: var(--color-error);
+}
+
+.info {
+  background: var(--color-surface);
+  border-color: var(--color-info);
+  color: var(--color-text);
+}
+
+.info .feedbackIcon {
+  background: var(--color-secondary);
+}
+
+.ended {
+  width: 100%;
+  padding: calc(var(--space) * 2) var(--space);
   text-align: center;
 }
 

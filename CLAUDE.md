@@ -58,4 +58,4 @@
 ## פקודות הרצה
 > Claude ממלא זאת ברגע שהאפליקציה יכולה לרוץ (בדרך כלל בסיום Milestone 1), ומעדכן אם משהו משתנה.
 - **הרצה (dev):** `npm run dev` (כתובת: http://localhost:5173/Math-Game/)
-- **בדיקות (test):** אין עדיין (יתווספו ב-M2); בדיקת טיפוסים ו-Build: `npm run build`
+- **בדיקות (test):** `npm test -- --run` (או `npm test` במצב צפייה); בדיקת טיפוסים ו-Build: `npm run build`
