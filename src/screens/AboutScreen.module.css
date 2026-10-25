@@ -24,9 +24,13 @@
 }
 
 .statValue {
-  font-size: var(--font-h1);
   font-weight: 700;
   color: var(--color-text-secondary);
+}
+
+.statNumber {
+  font-size: var(--font-h1);
+  color: var(--color-text);
 }
 
 .divider {
@@ -39,8 +43,6 @@
   text-align: center;
 }
 
-.pending {
-  color: var(--color-text-secondary);
-  font-size: var(--font-caption);
-  text-align: center;
+.range {
+  white-space: nowrap;
 }

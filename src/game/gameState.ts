@@ -1,7 +1,7 @@
 import { ALL_EXERCISE_IDS, TOTAL_EXERCISES, parsePair, product, type DisplayPair } from './exercises.ts'
 import { cryptoRandomInt, shuffle, type RandomInt } from './random.ts'
 
-// Shape follows SavedGame in ARCHITECTURE 2.3 (persistence arrives in M4)
+// Shape follows SavedGame in ARCHITECTURE 2.3; persisted by storage.ts
 export type RoundStatus = 'playing' | 'lost' | 'won'
 
 export interface Round {

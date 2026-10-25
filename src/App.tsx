@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Screen } from './types.ts'
 import BottomNav from './components/BottomNav.tsx'
+import StorageNotice from './components/StorageNotice.tsx'
 import HomeScreen from './screens/HomeScreen.tsx'
 import PracticeScreen from './screens/PracticeScreen.tsx'
 import AboutScreen from './screens/AboutScreen.tsx'
@@ -14,6 +15,7 @@ export default function App() {
     <GameProvider>
       <div className={styles.shell}>
         <main className={styles.content}>
+          <StorageNotice />
           {activeScreen === 'home' && <HomeScreen onNavigate={setActiveScreen} />}
           {activeScreen === 'practice' && <PracticeScreen onNavigate={setActiveScreen} />}
           {activeScreen === 'about' && <AboutScreen />}

@@ -1,0 +1,27 @@
+/* Same look as the neutral info message in practice (DESIGN 1.2) */
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--space);
+  padding: 8px 12px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-info);
+  border-radius: var(--radius-md);
+  font-size: var(--font-caption);
+  font-weight: 700;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}

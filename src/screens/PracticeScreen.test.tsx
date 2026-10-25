@@ -12,7 +12,7 @@ function exerciseText(state: GameState, index: number): string {
   return `${a} × ${b} = ?`
 }
 
-// Exposes the in-memory personal best, which has no UI until M4
+// Exposes the personal best, which is only shown on the About screen
 function BestScoreProbe() {
   const { state } = useGame()
   // Attribute rather than text, so it never clashes with on-screen numbers

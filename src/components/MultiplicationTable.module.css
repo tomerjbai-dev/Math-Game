@@ -1,0 +1,49 @@
+/* 11 fixed columns fit a 360px phone without horizontal scroll (ARCHITECTURE 2.6) */
+.frame {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #fff;
+  font-size: var(--font-caption);
+  text-align: center;
+}
+
+.table th,
+.table td {
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+}
+
+/* Drop the outer cell borders; the frame draws the outline */
+.table tr > :first-child {
+  border-inline-start: none;
+}
+
+.table tr > :last-child {
+  border-inline-end: none;
+}
+
+.table thead th {
+  border-top: none;
+}
+
+.table tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+.table th {
+  background: var(--color-surface);
+  font-weight: 700;
+}
+
+.corner {
+  color: var(--color-primary);
+}
